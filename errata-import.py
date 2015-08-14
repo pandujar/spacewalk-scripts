@@ -6,6 +6,7 @@
 # 2015-06-17 - Workarround for Spacewalk bug (adding packages after create)
 # 2015-06-16 - Initial working version 
 
+import sys
 import xmlrpclib
 from datetime import datetime
 import xml.etree.cElementTree as xml
@@ -38,6 +39,7 @@ def connect(url, login, passwd):
 		print "[+] Connected to %s" % url
 	except Exception, e:
 		print "[-] Error connecting to %s: %s" % (url, e)
+		sys.exit(1)
 	
 def logout(key):
 	client.auth.logout(key)
